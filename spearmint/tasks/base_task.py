@@ -246,22 +246,22 @@ class BaseTask(object):
         
         if indent_top_row:
             sys.stderr.write(indentation)
-        sys.stderr.write('NAME          TYPE       VALUE\n')
+        sys.stderr.write('NAME                      TYPE       VALUE\n')
         sys.stderr.write(indentation)
-        sys.stderr.write('----          ----       -----\n')
+        sys.stderr.write('----                      ----       -----\n')
 
         for param_name, param in params.iteritems():
 
             if param['type'] == 'float':
-                format_str = '%s%-12.12s  %-9.9s  %-12f\n'
+                format_str = '%s%-24.24s  %-9.9s  %-12f\n'
             else:
-                format_str = '%s%-12.12s  %-9.9s  %-12d\n'
+                format_str = '%s%-24.24s  %-9.9s  %-12d\n'
 
             for i in xrange(len(param['values'])):
                 if i == 0:
                     sys.stderr.write(format_str % (indentation, param_name, param['type'], param['values'][i]))
                 else:
-                    sys.stderr.write(format_str % (indentation, '',                        param['values'][i]))
+                    sys.stderr.write(format_str % (indentation, '', '', param['values'][i]))
 
     # Converts a vector in input space to the corresponding dict of params
     def paramify(self, data_vector):
